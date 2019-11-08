@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteRule ^listerTemperature/(.*)/(.*)/(.*)$  listerTemperatureJour.php?annee=$1?mois=$2?jour=$3
-RewriteRule ^listerTemperature/(.*)/(.*)$  listerTemperatureMois.php?annee=$1?mois=$2
-RewriteRule ^listerTemperature/(.*)$  listerTemperatureAnnee.php?annee=$1
-RewriteRule ^listerTemperature/global$  listerTemperatureGlobal.php
+RewriteRule ^(.*)/(.*)/(.*)$  listerTemperatureJour.php?annee=$1?mois=$2?jour=$3
+RewriteRule ^(.*)/(.*)$  listerTemperatureMois.php?annee=$1?mois=$2
+RewriteRule ^(.*)$  listerTemperatureAnnee.php?annee=$1
+RewriteRule ^global$  listerTemperatureGlobal.php

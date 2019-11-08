@@ -3,7 +3,8 @@
 
 $reponse = "<?xml version=\"1.0\" encoding=\"utf-8\"?><resultat>";
 
-if (isset($_GET['annee'],$_GET['mois'])){
+if (isset($_GET['annee'],$_GET['mois']))
+{
 
 
   $reponse .= "<ListeTemperature date= '". $_GET['mois'] ."/". $_GET['annee'] ."'>";
@@ -23,7 +24,7 @@ if (isset($_GET['annee'],$_GET['mois'])){
   // }
 
 
-  $reponse .="</ListeTemperature>"
+  $reponse .="</ListeTemperature>";
 
 }
 echo $reponse;
