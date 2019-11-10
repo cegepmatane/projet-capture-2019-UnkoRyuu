@@ -1,9 +1,11 @@
 <?php
+require "./connexion_bdd.php";
 
+$db = connexion_bdd();
 
 $reponse = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
-echo   . $_GET['mois'] ."/". $_GET['annee'];
+echo   $_GET['mois'] ."/". $_GET['annee'];
 
 if (isset($_GET['annee'],$_GET['mois']))
 {

@@ -1,9 +1,10 @@
 <?php
-
+require "./connexion_bdd.php";
 
 $reponse = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
-echo   $_GET['annee'];
+echo $_GET['annee'];
+
 
 if (isset($_GET['annee']))
 {

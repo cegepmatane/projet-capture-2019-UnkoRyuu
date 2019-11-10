@@ -1,14 +1,27 @@
 <?php
-define('DB_USER', "php-ProjetCapture"); // db user
-define('DB_PASSWORD', "mdp-ProjetCapture"); // db password (mention your db password here)
-define('DB_DATABASE', "ProjetCapture"); // database name
-define('DB_SERVER', "localhost"); // db server
 
 
 
 function connexion_bdd(){
-  $postgreDB = new PDO();
-	return	$postgreDB ;
+  $usager = 'php-ProjetCapture';
+  $motdepasse = 'mdp-ProjetCapture';
+  $hote = 'localhost';
+  $base = 'ProjetCapture';
+  $dsn = 'pgsql:dbname='.$base.';host=' . $hote;
+  try{
+    $conn = new PDO($dsn, $usager, $motdepasse);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    if($conn){
+      echo "DB OK!";
+      echo "\n";
+      return	$conn ;
+    }
+  }catch (PDOException $e){
+    echo $e->getMessage();
+    echo "\n";
+    return Null;
+  }
+
 }
 
 
