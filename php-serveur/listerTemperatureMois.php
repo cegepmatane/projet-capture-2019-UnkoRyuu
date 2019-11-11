@@ -13,7 +13,17 @@ function ListeTemperatureParAnneeMois($annee, $mois){
 
   $req->execute(array($annee, $mois));
   return $req->fetch(PDO::FETCH_BOTH);
+}
 
+function MoyMinMaxParAnneeMois($annee, $mois){
+  $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
+                        MIN(column_name) AS temperatureMin,
+                        MAX(column_name) AS temperatureMax,
+                        FROM ReleveEnvironnement
+                        WHERE year(date) = ?, month(date) = ?;");
+
+  $req->execute(array($annee, $mois));
+  return $req->fetch(PDO::FETCH_BOTH);
 }
 
 $db = connexion_bdd();
