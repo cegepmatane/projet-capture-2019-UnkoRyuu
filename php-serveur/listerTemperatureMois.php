@@ -1,6 +1,21 @@
 <?php
 require "./connexion_bdd.php";
 
+function ListeTemperatureParAnneeMois($annee ,$mois){
+  $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
+                        MIN(column_name) AS temperatureMin,
+                        MAX(column_name) AS temperatureMax,
+                        day(date) AS jour,
+                        FROM ReleveEnvironnement
+                        WHERE year(date) = ?, month(date) = ?
+                        GROUP BY day(date)
+                        ORDER BY day(date);" );
+
+  $req->execute(array($annee, $mois));
+  return $req->fetch(PDO::FETCH_BOTH);
+
+}
+
 $db = connexion_bdd();
 
 $reponse = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";

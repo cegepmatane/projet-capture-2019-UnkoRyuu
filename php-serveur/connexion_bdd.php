@@ -8,6 +8,8 @@ function connexion_bdd(){
   $hote = 'localhost';
   $base = 'ProjetCapture';
   $dsn = 'pgsql:dbname='.$base.';host=' . $hote;
+
+
   try{
     $conn = new PDO($dsn, $usager, $motdepasse);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

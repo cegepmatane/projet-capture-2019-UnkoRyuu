@@ -1,24 +1,43 @@
 <?php
 require "./connexion_bdd.php";
 
+function ListeTemperatureParAnnee($annee){
+  $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
+                        MIN(column_name) AS temperatureMin,
+                        MAX(column_name) AS temperatureMax,
+                        month(date) AS mois,
+                        FROM ReleveEnvironnement
+                        WHERE year(date) = ?
+                        GROUP BY month(date)
+                        ORDER BY month(date);" );
+
+  $req->execute(array($annee));
+  return $req->fetch(PDO::FETCH_BOTH);
+
+}
+
+
 $reponse = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
-echo $_GET['annee'];
+
 
 
 if (isset($_GET['annee']))
 {
 
 
+
   $reponse .= "<ListeTemperature date= '". $_GET['annee'] ."'>";
 
-  //foreach ($variable as $key => $value) {
-    // <Temperature annee=”2019”>
-      // <Min> -3 </Min>
-      // <Max>13</Max>
-      // <Moyenne>2</Moyenne>
-    // </Temperature>
-  //}
+  $listeTemperature = ListeTemperatureParAnnee($_GET['annee']);
+
+  foreach ($resultat as $key => $value) {
+    $reponse .= "<Temperature mois='".$mois."'>";
+      $reponse .= "<Min>".$temperatureMin."</Min>";
+      $reponse .= "<Max>".$temperatureMax."</Max>";
+      $reponse .= "<Moyenne>".$temperatureMoy."</Moyenne>";
+    $reponse .= "</Temperature>";
+  }
 
   // if (condition) {  //not null
   //   <MinTotal>-12</MinTotal>
