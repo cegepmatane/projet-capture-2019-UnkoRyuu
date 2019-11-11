@@ -49,11 +49,14 @@ if (isset($_GET['annee']))
     $reponse .= "</Temperature>";
   }
 
-  // if (condition) {  //not null
-  //   <MinTotal>-12</MinTotal>
-  //   <MaxTotal>20</MaxTotal>
-  //   <MoyenneTotal>6</MoyenneTotal>
-  // }
+  if ($listeTemperature != null) {
+    $resultat = MoyMinMaxParAnnee($_GET['annee']);
+    if ($resultat != null) {
+      $reponse .= "<MinTotal>".$resultat->temperatureMin."</MinTotal>";
+      $reponse .= "<MaxTotal>".$resultat->temperatureMax."</MaxTotal>";
+      $reponse .= "<MoyenneTotal>".$resultat->temperatureMoy."</MoyenneTotal>";
+    }
+  }
 
 
   $reponse .="</ListeTemperature>";
