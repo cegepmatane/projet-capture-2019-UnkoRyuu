@@ -31,7 +31,7 @@ if (isset($_GET['annee']))
 
   $listeTemperature = ListeTemperatureParAnnee($_GET['annee']);
 
-  foreach ($resultat as $key => $value) {
+  foreach ($listeTemperature as $key => $value) {
     $reponse .= "<Temperature mois='".$mois."'>";
       $reponse .= "<Min>".$temperatureMin."</Min>";
       $reponse .= "<Max>".$temperatureMax."</Max>";

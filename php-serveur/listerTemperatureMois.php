@@ -1,7 +1,7 @@
 <?php
 require "./connexion_bdd.php";
 
-function ListeTemperatureParAnneeMois($annee ,$mois){
+function ListeTemperatureParAnneeMois($annee, $mois){
   $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
                         MIN(column_name) AS temperatureMin,
                         MAX(column_name) AS temperatureMax,
@@ -28,13 +28,14 @@ if (isset($_GET['annee'],$_GET['mois']))
 
   $reponse .= "<ListeTemperature date= '". $_GET['mois'] ."/". $_GET['annee'] ."'>";
 
-  //foreach ($variable as $key => $value) {
-    // <Temperature mois=”01”>
-      // <Min> -3 </Min>
-      // <Max>13</Max>
-      // <Moyenne>2</Moyenne>
-    // </Temperature>
-  //}
+  $listeTemperature = ListeTemperatureParAnneeMois($_GET['annee'],$_GET['mois']);
+  foreach ($listeTemperature as $key => $value) {
+    $reponse .= "<Temperature jour='".$jour."'>";
+      $reponse .= "<Min>".$temperatureMin."</Min>";
+      $reponse .= "<Max>".$temperatureMax."</Max>";
+      $reponse .= "<Moyenne>".$temperatureMoy."</Moyenne>";
+    $reponse .= "</Temperature>";
+  }
 
   // if (condition) {  //not null
   //   <MinTotal>-12</MinTotal>

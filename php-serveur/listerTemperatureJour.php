@@ -27,13 +27,15 @@ if (isset($_GET['annee'],$_GET['mois'],$_GET['jour']))
 
   $reponse .= "<ListeTemperature date= '" . $_GET['jour']."/". $_GET['mois'] ."/". $_GET['annee']  ."'>";
 
-  //foreach ($variable as $key => $value) {
-    // <Temperature heure=”01”>
-      // <Min> -3 </Min>
-      // <Max>13</Max>
-      // <Moyenne>2</Moyenne>
-    // </Temperature>
-  //}
+  $listeTemperature = ListeTemperatureParAnneeMoisJour($_GET['annee'],$_GET['mois'],$_GET['jour']);
+
+  foreach ($listeTemperature as $key => $value) {
+    $reponse .= "<Temperature heure='".$heure."'>";
+      $reponse .= "<Min>".$temperatureMin."</Min>";
+      $reponse .= "<Max>".$temperatureMax."</Max>";
+      $reponse .= "<Moyenne>".$temperatureMoy."</Moyenne>";
+    $reponse .= "</Temperature>";
+  }
 
   // if (condition) {  //not null
   //   <MinTotal>-12</MinTotal>
