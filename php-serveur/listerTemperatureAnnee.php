@@ -3,8 +3,8 @@ require "./connexion_bdd.php";
 
 function ListeTemperatureParAnnee($annee){
   $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
-                        MIN(column_name) AS temperatureMin,
-                        MAX(column_name) AS temperatureMax,
+                        MIN(temperature) AS temperatureMin,
+                        MAX(temperature) AS temperatureMax,
                         month(date) AS mois,
                         FROM ReleveEnvironnement
                         WHERE year(date) = ?
@@ -17,8 +17,8 @@ function ListeTemperatureParAnnee($annee){
 
 function MoyMinMaxParAnnee($annee){
   $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
-                        MIN(column_name) AS temperatureMin,
-                        MAX(column_name) AS temperatureMax,
+                        MIN(temperature) AS temperatureMin,
+                        MAX(temperature) AS temperatureMax,
                         FROM ReleveEnvironnement
                         WHERE year(date) = ?;");
 
