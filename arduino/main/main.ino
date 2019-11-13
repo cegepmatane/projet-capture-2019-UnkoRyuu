@@ -41,7 +41,7 @@ void setup()
 void loop()
 {
   start_test();
-  Serial.print("Humdity = ");
+ /* Serial.print("Humdity = ");
   Serial.print(dat[0], DEC); 
   Serial.print('.');
   Serial.print(dat[1], DEC); 
@@ -50,11 +50,13 @@ void loop()
   Serial.print(dat[2], DEC);
   Serial.print('.');
   Serial.print(dat[3], DEC); 
-  Serial.println('C');
+  Serial.println('C');*/
   byte checksum = dat[0] + dat[1] + dat[2] + dat[3];
-  if (dat[4] != checksum) 
-    Serial.println("-- Checksum Error!");
-  else
-    Serial.println("-- OK"); 
-  delay(60000);
+  if (dat[4] != checksum){    
+    Serial.write("0");
+  }
+  else{
+    Serial.write(dat[2]);
+  }
+  delay(10000);
 }

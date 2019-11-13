@@ -21,7 +21,7 @@ var reponseRequete = function(requete, reponse){
 
   reponse.stastusCode = 200;
   reponse.setHeader('Content-Type','text/plain');
-  reponse.end(json); 
+  reponse.end(json); //fermeture du json 
 
 }
 
