@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css" />
-    <title>Donnees de l'annee</title>
+<title>Donnees de l'annee</title>
 </head>
 <body>
 <h1>Donnees de l'annee</h1>
@@ -47,8 +42,3 @@
     <br></br>
 
 </section>
-    <a href="DonneesJours.html">Donnees du jour</a></br>
-    <a href="DonneesMois.html">Donnees du mois</a></br>
-    <a href="DonneesGlobales.html">Retour</a></br>
-</body>
-</html>
