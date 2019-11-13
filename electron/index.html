@@ -1,15 +1,129 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/Style.css">
+  <title>Analyse</title>
+</head>
+<body>
+  <script type="plain/text" id="page-temperature-globale">
+<header>
+    <h2>Donnees globales</h2>
+</header>
+    <p>Bonjour et bienvenue sur notre site de releve de temperature</p>
+
+    <h3> Donnees : </h3>
+
+    <p2> Voici les differentes temperatures en generale: </p2>
+    <br></br>
+
+    <nav>
+      <label for="temperaturemoy">Temperature moyenne:</label>
+
+
+      <input type="text" id="temperaturemoy" temperaturemoy="temperaturemoy" required
+      minlength="4" maxlength="8" size="10">
+
+      <br></br>
+    </nav>
+    <section>
+      <article>
+        <label for="temperature">Temperature relevee:</label>
+
+        <input type="text" id="temperature" temperature="temperature" required
+        minlength="4" maxlength="8" size="10">
+        <br></br>
+      </article>
+
+
+      <aside>
+        <label for="temperaturemax">Temperature maximum:</label>
+
+        <input type="text" id="temperaturemax" temperaturemax="temperaturemax" required
+        minlength="4" maxlength="8" size="10">
+        <br></br>
+      </aside>
+      <aside>
+        <label for="temperaturemin">Temperature minimum:</label>
+
+        <input type="text" id="temperaturemin" temperaturemin="temperaturemin" required
+        minlength="4" maxlength="8" size="10">
+        <br></br>
+      </aside>
+    </section>
+
+    <br></br>
+
+
+  <footer>
+    <a href="#page-temperature-jour">Donnees du jour</a></br>
+    <a href="">Donnees du mois</a></br>
+    <a href="DonneesAnnees.html">Donnees de annee</a></br>
+  </footer>
+
+  </script>
+
+  <script type="plain/text" id="page-temperature-jour">
+  <title>Donnees de la journee</title>
   </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+
+  <header>
+      <h2>Donnees du jour</h2>
+  </header>
+
+  <p>Voici les donnees du jour : </p>
+
+  <br></br>
+
+  <nav>
+  <label for="temperaturemoy">Temperature moyenne:</label>
+
+
+  <input type="text" id="temperaturemoy" temperaturemoy="temperaturemoy" required
+  minlength="4" maxlength="8" size="10">
+
+
+  </nav>
+
+  <section>
+  <article>
+  <label for="temperature">Temperature relevee:</label>
+
+  <input type="text" id="temperature" temperature="temperature" required
+  minlength="4" maxlength="8" size="10">
+  <br></br>
+  </article>
+
+
+  <aside>
+  <label for="temperaturemax">Temperature maximum:</label>
+
+  <input type="text" id="temperaturemax" temperaturemax="temperaturemax" required
+  minlength="4" maxlength="8" size="10">
+  <br></br>
+  </aside>
+  <aside>
+  <label for="temperaturemin">Temperature minimum:</label>
+
+  <input type="text" id="temperaturemin" temperaturemin="temperaturemin" required
+  minlength="4" maxlength="8" size="10">
+  <br></br>
+  </aside>
+
+  <br></br>
+  </section>
+
+  <footer>
+    <a href="#page-temperature-mois">Donnees du mois</a></br>
+    <a href="#page-temperature-annee">Donnees annee</a></br>
+    <a href="#">Retour</a></br>
+  </footer>
+  </script>
+
+<script src="vue/TemperaturesJourVue.js"></script>
+  <script src="vue/TemperaturesVue.js"></script>
+  <script src="controleur/controleur.js"></script>
+
+
+</body>
 </html>
