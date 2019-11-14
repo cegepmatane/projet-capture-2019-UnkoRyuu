@@ -53,10 +53,10 @@ void loop()
   Serial.println('C');*/
   byte checksum = dat[0] + dat[1] + dat[2] + dat[3];
   if (dat[4] != checksum){    
-    Serial.write("0");
+    Serial.println("!!");
   }
   else{
-    Serial.write(dat[2]);
+    Serial.println(dat[2]);
   }
   delay(10000);
 }

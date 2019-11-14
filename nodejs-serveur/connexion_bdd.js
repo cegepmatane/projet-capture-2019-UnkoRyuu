@@ -1,31 +1,45 @@
-var http = require('http'); //connexion en http 
+/*const Client = require('pg')
 
-var reponseRequete = function(requete, reponse){
-  console.log('url: '+requete.url);
-  console.log('method: '+requete.method);
-  console.log('headers: '+requete.headers);
-  console.log('body: '+requete.body); //log de recuperation de données 
+const client = new Client ({
+  user: 'php-ProjetCapture',
+  host: '51.91.96.142',
+  database: 'ProjetCapture',
+  password: 'mdp-ProjetCapture',
+  port: 5432
+})
+client.connect()
 
-  var json  = ''; // creation du json 
-
-  if(requete.method === 'GET'){
-    if (requete.url === '/activites') {
-      json  = JSON.stringify(activites);
-    }
-    if (regex = requete.url.match(/\/activite-([0-9]+)/i) ){
-      var id = regex[1];
-      json  = JSON.stringify(activites[id]);
-    }
-  } //inscription des données serialisé dans le json 
+client.query('INSERT INTO ReleveEnvironnment (temperature) VALUES (1)'); (err, res) =­­> {
+  console.log(err, res)
+  client.end()
+})*/
 
 
-  reponse.stastusCode = 200;
-  reponse.setHeader('Content-Type','text/plain');
-  reponse.end(json); //fermeture du json 
+const {Pool, Client} = require('pg')
 
-}
+const pool = new Pool({
+  user: 'php-ProjetCapture',
+  host: '51.91.96.142',
+  database: 'ProjetCapture',
+  password: 'mdp-ProjetCapture',
+  port: 5432
+})
 
-var serveur = http.createServer(reponseRequete);
-serveur.listen(8080, '127.0.0.1', () => {
-  console.log(`Bienvenue sur Analyse Envrinonemment`);
-}); //connexion au serveur en local 
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err,res)
+  pool.end()
+})
+
+const client = new Client({
+  user: 'php-ProjetCapture',
+  host: '51.91.96.142',
+  database: 'ProjetCapture',
+  password: 'mdp-ProjetCapture',
+  port: 5432
+})
+client.connect()
+
+client.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  client.end()
+})
