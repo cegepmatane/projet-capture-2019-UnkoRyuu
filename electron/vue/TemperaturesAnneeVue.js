@@ -1,44 +1,21 @@
-<title>Donnees de l'annee</title>
-</head>
-<body>
-<h1>Donnees de l'annee</h1>
+var TemperaturesAnneeVue = (function(){
 
-    <p2>Voici les donnees de l'annee : </p2>
-<br></br>
-<section>
-    <article>
-        <label for="temperature">Temperature relevee:</label>
-
-        <input type="text" id="temperature" temperature="temperature" required
-               minlength="4" maxlength="8" size="10">
-        <br></br>
-    </article>
+  pageTemperatureAnneeVue = document.getElementById("page-temperature-annee").innerHTML;
 
 
-    <aside>
-        <label for="temperaturemax">Temperature maximum:</label>
+  return function()
+  {
+    this.afficher = function(){
+      elementBody = document.getElementsByTagName("body")[0];
+      elementBody.innerHTML = pageTemperatureAnneeVue;
+    }
+  }
 
-        <input type="text" id="temperaturemax" temperaturemax="temperaturemax" required
-               minlength="4" maxlength="8" size="10">
-        <br></br>
-    </aside>
-    <aside>
-        <label for="temperaturemin">Temperature minimum:</label>
-
-        <input type="text" id="temperaturemin" temperaturemin="temperaturemin" required
-               minlength="4" maxlength="8" size="10">
-        <br></br>
-    </aside>
-
-    <nav>
-        <label for="temperaturemoy">Temperature moyenne:</label>
+})();
 
 
-        <input type="text" id="temperaturemoy" temperaturemoy="temperaturemoy" required
-               minlength="4" maxlength="8" size="10">
 
-        <br></br>
-    </nav>
-    <br></br>
 
-</section>
+/*
+
+*/

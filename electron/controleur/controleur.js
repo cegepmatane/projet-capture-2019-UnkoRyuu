@@ -14,8 +14,14 @@
     }else if(hash.match(/^#page-temperature-jour/)) {
       var pageJour = new TemperaturesJourVue();
       pageJour.afficher();
+    }else if(hash.match(/^#page-temperature-mois/)) {
+      var pageMois = new TemperaturesMoisVue();
+      pageMois.afficher();
+    }else if(hash.match(/^#page-temperature-annee/)) {
+    var pageAnnee = new TemperaturesAnneeVue();
+    pageAnnee.afficher();
     }else{
-      jejdehuheuhfjif;
+    "Erreur dans l'application";
     }
   }
 
