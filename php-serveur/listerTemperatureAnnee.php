@@ -26,17 +26,10 @@ function MoyMinMaxParAnnee($annee){
   return $req->fetch(PDO::FETCH_BOTH);
 }
 
-
 $reponse = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-
-
-
 
 if (isset($_GET['annee']))
 {
-
-
-
   $reponse .= "<ListeTemperature date= '". $_GET['annee'] ."'>";
 
   $listeTemperature = ListeTemperatureParAnnee($_GET['annee']);
