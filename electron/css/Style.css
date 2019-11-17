@@ -6,7 +6,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Style the header */
 header {
 
   padding: 20px;
@@ -20,44 +19,33 @@ p{
   text-align: center;
 }
 
-/* Create two columns/boxes that floats next to each other */
 nav {
   float: left;
-  width: 33%;
-  height: 300px; /* only for demonstration, should be removed */
+  width: 50%;
+  height: 300px;
   text-align: center;
   padding: 20px;
 }
 
-/* Style the list inside the menu */
 nav ul {
   list-style-type: none;
   padding: 0;
 }
 
-article {
+section {
   float: left;
   padding: 20px;
-  width: 34%;
+  width: 50%;
   text-align: center;
-  height: 300px; /* only for demonstration, should be removed */
+  height: 300px;
 }
 
-/* Clear floats after the columns */
 section:after {
-
   content: "";
   display: table;
   clear: both;
 }
 
-aside{
-text-align: center;
-
-
-}
-
-/* Style the footer */
 footer {
   position: fixed;
   bottom: 0;
@@ -68,10 +56,8 @@ footer {
   background-color: ghostwhite;
 }
 
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
   nav, article {
-    width: 33%;
     height: auto;
   }
 }
@@ -81,8 +67,26 @@ label{
   padding: 2px;
 }
 
-
 body {
   background-image: url("meteo.jpg");
+}
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+tr {
+  background-color: #ffffff;
 }

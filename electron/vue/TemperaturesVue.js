@@ -2,7 +2,6 @@ var TemperaturesVue = (function(){
 
   pageTemperatureVue = document.getElementById("page-temperature-globale").innerHTML;
 
-
   return function()
   {
     this.afficher = function(){
