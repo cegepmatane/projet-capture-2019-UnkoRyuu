@@ -6,9 +6,9 @@
   }
 
   var naviguer = function(){
-    var listeTemperatureHeure = ["42", "23", "13", "17"];
-    var listeTemperatureMois = ["20", "10", "12", "14"];
-    var listeTemperatureAnnee = ["20", "9", "15", "16"];
+    var listeTemperatureHeure = ["26", "23", "12", "28"];
+    var listeTemperatureMois = ["28", "20", "14", "30"];
+    var listeTemperatureAnnee = ["30", "26", "24", "32"];
     var hash = window.location.hash;
     if(!hash){
       var pageGlobale = new TemperaturesVue();
