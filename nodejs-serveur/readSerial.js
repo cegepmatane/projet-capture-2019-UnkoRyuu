@@ -1,4 +1,4 @@
-const https = require('http');
+const http = require('http')
 const SerialPort = require('serialport');
 const Readline = require('@serialport/parser-readline');
 const port = new SerialPort('COM3', { baudRate: 9600 });
@@ -12,7 +12,7 @@ function creerJson(temperature, date){
 	var jsonData = '{"releve":{"temperature":'+temperature+',"date":"'+date+'"}}';
 	var jsonObj = JSON.parse(jsonData);
 	console.log(jsonObj);
-
+	return jsonData;
 }
 
 let i = 0;
@@ -29,9 +29,39 @@ parser.on('data', data =>{
 		let dateActuel = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
 		console.log('Date: '+ dateActuel);
 		let json = creerJson(data,dateActuel);
+		requetteHttp(json);
 	}else {
 		console.log("ETAT:"+data);
 		i=1;
 	}
 });
+
+
+var requetteHttp = function (data) {
+	const options = {
+		hostname: '51.81.96.142',
+		port: 8080,
+		path: '/',
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Content-Length': data.length
+		}
+	};
+
+	const req = http.request(options, (res) => {
+		console.log(`statusCode: ${res.statusCode}`);
+
+		res.on('data', (d) => {
+			process.stdout.write(d)
+		});
+	});
+
+	req.on('error', (error) => {
+		console.error(error)
+	});
+
+	req.write(data);
+	req.end();
+};
 
