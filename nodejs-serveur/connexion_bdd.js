@@ -29,17 +29,3 @@ pool.query('SELECT NOW()', (err, res) => {
   console.log(err,res)
   pool.end()
 })
-
-const client = new Client({
-  user: 'php-ProjetCapture',
-  host: '51.91.96.142',
-  database: 'ProjetCapture',
-  password: 'mdp-ProjetCapture',
-  port: 5432
-})
-client.connect()
-
-client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  client.end()
-})
