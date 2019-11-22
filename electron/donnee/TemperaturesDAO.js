@@ -1,8 +1,26 @@
-var TemperartureDAO = function(){
-  connection.query('SELECT * FROM `temperature` WHERE 1', function(err, rows, fields) {
-  if (err) throw err;
-    for (var i = 0; i < rows.length; i++) {
-      result = rows; //je stock le résultat dans une variable pour l'envoyer à la vue
+
+
+var TemperartureDAO = function () {
+
+    var initialiser = function(){
+        console.log("TemperartureDAO initialisé");
     };
-});
-}
+
+    this.recupereTemperatureAnnee = function () {
+        const options = net.request({
+            method: 'GET',
+            protocol: 'http:',
+            hostname: '51.91.96.142',
+            port: 80,
+            path: "/"+new Date().getFullYear()
+        })
+
+      const requette = new ClientRequest(options);
+      requette.on('response', data => {
+        console.log(data);
+      });
+      request.end();
+    };
+
+    initialiser();
+};
