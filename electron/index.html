@@ -1,105 +1,80 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/Style.css">
-  <title>Analyse</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/Style.css">
+    <title>Analyse</title>
 </head>
 <body>
   <script type="plain/text" id="page-temperature-globale">
-<header>
-    <h2>Donnees globales</h2>
-</header>
-    <p>Bonjour et bienvenue sur notre site de releve de temperature</p>
 
-    <h3> Donnees : </h3>
+    <header>
+        <h2>Donnees globales</h2>
+    </header>
 
-    <p2> Voici les differentes temperatures en generale: </p2>
-    <br></br>
 
-    <nav>
-      <label for="temperaturemoy">Temperature moyenne:</label>
 
-      <input type="text" id="temperaturemoy" temperaturemoy="temperaturemoy" required
-      minlength="4" maxlength="8" size="10">
-
-      <br></br>
-    </nav>
     <section>
-      <article>
-        <label for="temperature">Temperature relevee:</label>
-
-        <input type="text" id="temperature" temperature="temperature" required
-        minlength="4" maxlength="8" size="10">
-
-        <br></br>
-      </article>
-
-      <aside>
-        <label for="temperaturemax">Temperature maximum:</label>
-
-        <input type="text" id="temperaturemax" temperaturemax="temperaturemax" required
-        minlength="4" maxlength="8" size="10">
-        <br></br>
-
-      </aside>
-
-      <aside>
-        <label for="temperaturemin">Temperature minimum:</label>
-
-        <input type="text" id="temperaturemin" temperaturemin="temperaturemin" required
-        minlength="4" maxlength="8" size="10">
-        <br></br>
-
-      </aside>
+      <h1>Temperature en Celsius : </h1>
+      <table>
+        <thead>
+        <tr>
+          <th>Mininmum de l'annee</th>
+          <th>Maximum de l'annee</th>
+          <th>Moyenne de l'annee</th>
+          <th>Moyenne du mois</th>
+          <th>Moyenne du jour</th>
+          <th>Actuel</th>
+        </tr>
+        </thead>
+        <tbody id="table-moyenne">
+        </tbody>
+      </table>
     </section>
- <br></br>
 
 
-  <footer>
-    <a href="#page-temperature-jour">Donnees du jour</a></br>
-    <a href="#page-temperature-mois">Donnees du mois</a></br>
-    <a href="#page-temperature-annee">Donnees de annee</a></br>
-  </footer>
+    <footer>
+        <a href="#page-temperature-jour">Donnees du jour</a></br>
+        <a href="#page-temperature-mois">Donnees du mois</a></br>
+        <a href="#page-temperature-annee">Donnees de annee</a></br>
+    </footer>
+</div>
+</script>
 
-  </script>
-
-  <script type="plain/text" id="page-temperature-jour">
-  <title>Donnees de la journee</title>
-  </head>
+<script type="plain/text" id="page-temperature-jour">
 
   <header>
       <h2>Donnees du jour</h2>
   </header>
 
-  <p>Voici les donnees du jour : </p>
-
-  <br></br>
-
-  <nav>
-<table id="liste-temperature-jour"></table>
-
-  </nav>
 
   <section>
-
-  <label for="temperature">Temperature relevee:</label>
-
-  <input type="text" id="temperature" temperature="temperature" required
-  minlength="4" maxlength="8" size="10">
-  <br></br>
-
-  <label for="temperaturemax">Temperature maximum:</label>
-
-  <input type="text" id="temperaturemax" temperaturemax="temperaturemax" required
-  minlength="4" maxlength="8" size="10">
-  <br></br>
-
-  <label for="temperaturemin">Temperature minimum:</label>
-
-  <input type="text" id="temperaturemin" temperaturemin="temperaturemin" required
-  minlength="4" maxlength="8" size="10">
-  <br></br>
+      <h1>Temperature en Celsius : </h1>
+      <table>
+        <thead>
+        <tr>
+          <th>Jour</th>
+          <th>Mininmum du jour</th>
+          <th>Maximum du jour</th>
+          <th>Moyenne du jour</th>
+        </tr>
+        </thead>
+        <tbody id="table-jour">
+        </tbody>
+      </table>
+      <h1>Temperature par heure: </h1>
+       <table>
+        <thead>
+        <tr>
+          <th>Heure</th>
+          <th>Mininmum du jour</th>
+          <th>Maximum du jour</th>
+          <th>Moyenne du jour</th>
+        </tr>
+        </thead>
+        <tbody id="table-heure">
+        </tbody>
+      </table>
 
   </section>
 
@@ -108,9 +83,10 @@
     <a href="#page-temperature-annee">Donnees annee</a></br>
     <a href="#">Retour</a></br>
   </footer>
-  </script>
 
-    <script type="plain/text" id="page-temperature-mois">
+</script>
+
+<script type="plain/text" id="page-temperature-mois">
     <title>Donnees du mois</title>
     </head>
 
@@ -154,9 +130,10 @@
       <a href="#page-temperature-annee">Donnees annee</a></br>
       <a href="#">Retour</a></br>
     </footer>
-      </script>
 
-  <script type="plain/text" id="page-temperature-annee">
+</script>
+
+<script type="plain/text" id="page-temperature-annee">
   <title>Donnees annee</title>
   </head>
 
@@ -201,16 +178,17 @@
     <a href="#">Retour</a></br>
   </footer>
 
-   </script>
 
-  <script src="modele/Global.js"></script>
-  <script src="modele/Moment.js"></script>
-  <script src="donnee/TemperaturesDAO.js"></script>
-  <script src="vue/TemperaturesAnneeVue.js"></script>
-  <script src="vue/TemperaturesMoisVue.js"></script>
-  <script src="vue/TemperaturesJourVue.js"></script>
-  <script src="vue/TemperaturesVue.js"></script>
-  <script src="controleur/controleur.js"></script>
+</script>
+
+<script src="modele/Global.js"></script>
+<script src="modele/Moment.js"></script>
+<script src="donnee/TemperaturesDAO.js"></script>
+<script src="vue/TemperaturesAnneeVue.js"></script>
+<script src="vue/TemperaturesMoisVue.js"></script>
+<script src="vue/TemperaturesJourVue.js"></script>
+<script src="vue/TemperatureGlobalVue.js"></script>
+<script src="controleur/controleur.js"></script>
 
 </body>
 </html>

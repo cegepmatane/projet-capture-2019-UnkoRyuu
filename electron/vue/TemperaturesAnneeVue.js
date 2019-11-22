@@ -2,7 +2,7 @@ var TemperaturesAnneeVue = (function(){
 
   pageTemperatureAnneeVue = document.getElementById("page-temperature-annee").innerHTML;
 
-  return function(listeTemperatureAnnee)
+  return function(releveTemperature)
   {
     this.afficher = function(){
       elementBody = document.getElementsByTagName("body")[0];

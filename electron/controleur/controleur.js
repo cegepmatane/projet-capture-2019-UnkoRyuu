@@ -6,25 +6,22 @@
         naviguer();
     }
 
-    var naviguer = function () {
-        var listeTemperatureHeure = ["26", "23", "12", "28"];
-        var listeTemperatureMois = ["28", "20", "14", "30"];
-        var listeTemperatureAnnee = ["30", "26", "24", "32"];
+    var naviguer = async function () {
         var hash = window.location.hash;
         if (!hash || hash.match(/^#page-temperature-global/)) {
-            releveTemperature = temperatureDAO.recupereTemperatureGlobal();
-            var pageGlobale = new TemperaturesVue(releveTemperature);
+            releveTemperature = await temperatureDAO.recupereTemperatureGlobal();
+            var pageGlobale = new TemperatureGlobalVue(releveTemperature);
             pageGlobale.afficher();
         } else if (hash.match(/^#page-temperature-jour/)) {
-            releveTemperature = temperatureDAO.recupereTemperatureAnneeMoisJour();
+            releveTemperature = await temperatureDAO.recupereTemperatureAnneeMoisJour();
             var pageJour = new TemperaturesJourVue(releveTemperature);
             pageJour.afficher();
         } else if (hash.match(/^#page-temperature-mois/)) {
-            releveTemperature = temperatureDAO.recupereTemperatureAnneeMois();
+            releveTemperature = await temperatureDAO.recupereTemperatureAnneeMois();
             var pageMois = new TemperaturesMoisVue(releveTemperature);
             pageMois.afficher();
         } else if (hash.match(/^#page-temperature-annee/)) {
-            releveTemperature = temperatureDAO.recupereTemperatureAnnee();
+            releveTemperature = await temperatureDAO.recupereTemperatureAnnee();
             var pageAnnee = new TemperaturesAnneeVue(releveTemperature);
             pageAnnee.afficher();
         } else {

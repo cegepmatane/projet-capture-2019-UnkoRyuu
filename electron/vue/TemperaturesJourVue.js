@@ -2,19 +2,34 @@ var TemperaturesJourVue = (function(){
 
   pageTemperatureJourVue = document.getElementById("page-temperature-jour").innerHTML;
 
-  return function(listeTemperatureHeure)
+  return function(releveTemperature)
   {
     this.afficher = function(){
       elementBody = document.getElementsByTagName("body")[0];
       elementBody.innerHTML = pageTemperatureJourVue;
+      var tableJour = document.getElementById("table-jour");
 
-      var listeTemperatureHeurePage = document.getElementById("liste-temperature-jour");
+      var table = "<tr>";
 
-      var textLi= "";
-      for(var temperatureHeure in listeTemperatureHeure){
-        textLi +="<tr><td> Temperature : "+ listeTemperatureHeure[temperatureHeure]+"</td></tr>";
+      table += "<td>"+releveTemperature.momentTemps+"</td>";
+      table += "<td>"+releveTemperature.temperatureMin+"</td>";
+      table += "<td>"+releveTemperature.temperatureMax+"</td>";
+      table += "<td>"+releveTemperature.temperatureMoy+"</td>";
+      table += "</tr>";
+      tableJour.innerHTML = table;
+
+      var tableHeure = document.getElementById("table-heure");
+      var table = "";
+      for (var heure in releveTemperature.sousMoments){
+        console.log(heure);
+        table += "<tr>";
+        table += "<td>"+heure.momentTemps+"</td>";
+        table += "<td>"+heure.temperatureMin+"</td>";
+        table += "<td>"+heure.temperatureMax+"</td>";
+        table += "<td>"+heure.temperatureMoy+"</td>";
+        table += "</tr>";
       }
-      listeTemperatureHeurePage.innerHTML = textLi;
+      tableHeure.innerHTML = table;
     }
   }
 
