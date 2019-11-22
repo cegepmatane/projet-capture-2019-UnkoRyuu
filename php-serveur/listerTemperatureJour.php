@@ -2,6 +2,7 @@
 require "./connexion_bdd.php";
 
 function ListeTemperatureParAnneeMoisJour($annee, $mois, $jour){
+  $bdd = connexion_bdd();
   $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
                         MIN(temperature) AS temperatureMin,
                         MAX(temperature) AS temperatureMax,
@@ -16,6 +17,7 @@ function ListeTemperatureParAnneeMoisJour($annee, $mois, $jour){
 }
 
 function MoyMinMaxParAnneeMoisJour($annee, $mois, $jour){
+  $bdd = connexion_bdd();
   $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
                         MIN(temperature) AS temperatureMin,
                         MAX(temperature) AS temperatureMax,

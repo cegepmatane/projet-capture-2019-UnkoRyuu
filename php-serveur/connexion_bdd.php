@@ -14,8 +14,6 @@ function connexion_bdd(){
     $conn = new PDO($dsn, $usager, $motdepasse);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if($conn){
-      echo "DB OK!";
-      echo "\n";
       return	$conn ;
     }
   }catch (PDOException $e){

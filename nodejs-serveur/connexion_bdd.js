@@ -13,9 +13,21 @@ exports.insertBDD = async function(temperatureJSON) {
   });
   await bdd.connect();
 
-  await bdd.query("INSERT INTO \"ReleveEnvironnement\"(temperature) VALUES (1)",(err, res)=>{
-    console.log(err,res);
+
+  let temperature = temperatureJSON.temperature;
+  console.log("temperature : "+ temperature);
+
+  let date = new Date(temperatureJSON.date);
+  console.log("date : "+date);
+  console.log("\n");
+  let valeur = [temperature,date];
+  let req = "INSERT INTO \"ReleveEnvironnement\"(temperature, \"dateReleve\") VALUES ( $1, $2 )";
+  await bdd.query(req , valeur ,(err, res)=>{
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(res);
+    }
     bdd.end();
   });
 };
-

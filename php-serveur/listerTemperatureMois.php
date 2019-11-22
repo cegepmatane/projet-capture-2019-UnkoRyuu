@@ -2,6 +2,7 @@
 require "./connexion_bdd.php";
 
 function ListeTemperatureParAnneeMois($annee, $mois){
+  $bdd = connexion_bdd();
   $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
                         MIN(temperature) AS temperatureMin,
                         MAX(temperature) AS temperatureMax,
@@ -16,6 +17,7 @@ function ListeTemperatureParAnneeMois($annee, $mois){
 }
 
 function MoyMinMaxParAnneeMois($annee, $mois){
+  $bdd = connexion_bdd();
   $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
                         MIN(temperature) AS temperatureMin,
                         MAX(temperature) AS temperatureMax,
@@ -26,7 +28,7 @@ function MoyMinMaxParAnneeMois($annee, $mois){
   return $req->fetch(PDO::FETCH_BOTH);
 }
 
-$db = connexion_bdd();
+
 
 $reponse = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 

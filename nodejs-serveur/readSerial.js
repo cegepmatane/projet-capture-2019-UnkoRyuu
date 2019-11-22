@@ -8,8 +8,13 @@ port.on("open", () => {
 	console.log('Arduino connecté!');
 });
 
-function creerJson(temperature, date){
-	var jsonData = '{"releve":{"temperature":'+temperature+',"date":"'+date+'"}}';
+function creerJson(temperatureDonnee, dateDonnee){
+	var jsonData = JSON.stringify({
+	  releve: {
+			temperature: temperatureDonnee ,
+			date: dateDonnee
+		}
+	});
 	var jsonObj = JSON.parse(jsonData);
 	console.log(jsonObj);
 	return jsonData;
@@ -26,7 +31,7 @@ parser.on('data', data =>{
 		let hours = date_ob.getHours();
 		let minutes = date_ob.getMinutes();
 		let seconds = date_ob.getSeconds();
-		let dateActuel = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
+		var dateActuel = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
 		console.log('Date: '+ dateActuel);
 		let json = creerJson(data,dateActuel);
 		requetteHttp(json);
@@ -37,12 +42,11 @@ parser.on('data', data =>{
 });
 
 
-var requetteHttp = function (data) {
+var requetteHttp = async function (data) {
 	const options = {
-		hostname: '51.81.96.142',
+		hostname: '51.91.96.142',
 		port: 8080,
 		path: '/',
-		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 			'Content-Length': data.length
@@ -64,4 +68,3 @@ var requetteHttp = function (data) {
 	req.write(data);
 	req.end();
 };
-

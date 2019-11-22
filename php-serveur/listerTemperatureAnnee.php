@@ -2,57 +2,57 @@
 require "./connexion_bdd.php";
 
 function ListeTemperatureParAnnee($annee){
-  $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
-                        MIN(temperature) AS temperatureMin,
-                        MAX(temperature) AS temperatureMax,
-                        month(date) AS mois,
-                        FROM ReleveEnvironnement
-                        WHERE year(date) = ?
-                        GROUP BY month(date)
-                        ORDER BY month(date);" );
+  $bdd = connexion_bdd();
+  $req = $bdd->prepare( 'SELECT AVG(temperature) AS "temperatureMoy",
+                        MIN(temperature) AS "temperatureMin",
+                        MAX(temperature) AS "temperatureMax",
+                        extract(month from "dateReleve") AS "mois"
+                        FROM "ReleveEnvironnement"
+                        WHERE extract(year from "dateReleve") = ?
+                        GROUP BY extract(month from "dateReleve")
+                        ORDER BY extract(month from "dateReleve");');
 
   $req->execute(array($annee));
   return $req->fetch(PDO::FETCH_BOTH);
 }
 
 function MoyMinMaxParAnnee($annee){
-  $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
-                        MIN(temperature) AS temperatureMin,
-                        MAX(temperature) AS temperatureMax,
-                        FROM ReleveEnvironnement
-                        WHERE year(date) = ?;");
+  $bdd = connexion_bdd();
+  $req = $bdd->prepare( 'SELECT AVG(temperature) AS "temperatureMoy",
+                        MIN(temperature) AS "temperatureMin",
+                        MAX(temperature) AS "temperatureMax"
+                        FROM "ReleveEnvironnement"
+                        WHERE extract(year from "dateReleve") = ?;');
 
   $req->execute(array($annee));
   return $req->fetch(PDO::FETCH_BOTH);
 }
 
-$reponse = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+$reponse = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 
 if (isset($_GET['annee']))
 {
-  $reponse .= "<ListeTemperature date= '". $_GET['annee'] ."'>";
+  $reponse .= "<ListeTemperature date= '". $_GET['annee'] ."'>\n";
 
   $listeTemperature = ListeTemperatureParAnnee($_GET['annee']);
 
-  foreach ($listeTemperature as $key => $value) {
-    $reponse .= "<Temperature mois='".$mois."'>";
-      $reponse .= "<Min>".$temperatureMin."</Min>";
-      $reponse .= "<Max>".$temperatureMax."</Max>";
-      $reponse .= "<Moyenne>".$temperatureMoy."</Moyenne>";
-    $reponse .= "</Temperature>";
-  }
-
-  if ($listeTemperature != null) {
+  if (sizeof($listeTemperature) !=  0  ) {
+    $reponse .= "<Temperature mois='" . $listeTemperature['mois'] . "'>\n";
+      $reponse .= "<Min>".$listeTemperature['temperatureMin']."</Min>\n";
+      $reponse .= "<Max>".$listeTemperature['temperatureMax']."</Max>\n";
+      $reponse .= "<Moyenne>".$listeTemperature['temperatureMoy']."</Moyenne>\n";
+    $reponse .= "</Temperature>\n";
     $resultat = MoyMinMaxParAnnee($_GET['annee']);
     if ($resultat != null) {
-      $reponse .= "<MinTotal>".$resultat->temperatureMin."</MinTotal>";
-      $reponse .= "<MaxTotal>".$resultat->temperatureMax."</MaxTotal>";
-      $reponse .= "<MoyenneTotal>".$resultat->temperatureMoy."</MoyenneTotal>";
+      var_dump($resultat);
+      $reponse .= "<MinTotal>".$resultat['temperatureMin']."</MinTotal>\n";
+      $reponse .= "<MaxTotal>".$resultat['temperatureMax']."</MaxTotal>\n";
+      $reponse .= "<MoyenneTotal>".$resultat['temperatureMoy']."</MoyenneTotal>\n";
     }
   }
 
 
-  $reponse .="</ListeTemperature>";
+  $reponse .="</ListeTemperature>\n";
 
 }
 echo $reponse;
