@@ -17,7 +17,7 @@ var TemperartureDAO = function () {
                 parser = new DOMParser();
                 var reponse = parser.parseFromString(xml, "text/xml");
 
-                console.log(reponse);
+                
                 var listeTemperature = reponse.getElementsByTagName("ListeTemperature")[0];
 
                 var annee = new Moment(
@@ -57,7 +57,7 @@ var TemperartureDAO = function () {
                 parser = new DOMParser();
                 var reponse = parser.parseFromString(xml, "text/xml");
 
-                console.log(reponse);
+                
                 var listeTemperature = reponse.getElementsByTagName("ListeTemperature")[0];
 
                 var mois = new Moment(
@@ -99,7 +99,7 @@ var TemperartureDAO = function () {
                 parser = new DOMParser();
                 var reponse = parser.parseFromString(xml, "text/xml");
 
-                console.log(reponse);
+                
                 var listeTemperature = reponse.getElementsByTagName("ListeTemperature")[0];
 
                 var jour = new Moment(
@@ -133,7 +133,7 @@ var TemperartureDAO = function () {
         var month =  parseInt(new Date().getMonth())  + 1;
         var day = new Date().getDate();
         let response = await fetch('http://51.91.96.142' +
-            '/AnalyseEnvironnement/listerTemperature/' + year + '/' + month + '/' +  day)
+            '/AnalyseEnvironnement/listerTemperature/global')
             .then(function (response) {
                 return response.text();
             }).then(function (xml) {
@@ -141,31 +141,22 @@ var TemperartureDAO = function () {
                 parser = new DOMParser();
                 var reponse = parser.parseFromString(xml, "text/xml");
 
-                console.log(reponse);
-                var listeTemperature = reponse.getElementsByTagName("ListeTemperature")[0];
+                var temperature = reponse.getElementsByTagName("Temperature")[0];
+                var moyenne = temperature.getElementsByTagName("Moyenne")[0];
 
-                var jour = new Moment(
-                    listeTemperature.getAttribute("date"),
-                    listeTemperature.getElementsByTagName("MinTotal")[0].innerHTML,
-                    listeTemperature.getElementsByTagName("MaxTotal")[0].innerHTML,
-                    listeTemperature.getElementsByTagName("MoyenneTotal")[0].innerHTML
+                var global = new Global(
+                    moyenne.getElementsByTagName("Annee")[0].innerHTML,
+                    moyenne.getElementsByTagName("Mois")[0].innerHTML,
+                    moyenne.getElementsByTagName("Jour")[0].innerHTML,
+                    temperature.getElementsByTagName("MinAnnee")[0].innerHTML,
+                    temperature.getElementsByTagName("MaxAnnee")[0].innerHTML,
+                    temperature.getElementsByTagName("TemperatureActuel")[0].innerHTML
+
                 );
 
-                listeTemperatureMois = listeTemperature.getElementsByTagName("Temperature");
-                for (let i = 0; i < listeTemperatureMois.length; i++) {
-                    var heureXML = listeTemperatureMois[i];
-                    var heure = new Moment(
-                        heureXML.getAttribute("jour"),
-                        heureXML.getElementsByTagName("Min")[0].innerHTML,
-                        heureXML.getElementsByTagName("Max")[0].innerHTML,
-                        heureXML.getElementsByTagName("Moyenne")[0].innerHTML
-                    );
-                    console.log(heure);
-                    jour.sousMoments.push(heure);
-                }
-                console.log(jour);
+                console.log(global);
 
-                return jour;
+                return global;
             });
     };
 

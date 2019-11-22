@@ -13,19 +13,19 @@
         var hash = window.location.hash;
         if (!hash || hash.match(/^#page-temperature-global/)) {
             releveTemperature = temperatureDAO.recupereTemperatureGlobal();
-            var pageGlobale = new TemperaturesVue();
+            var pageGlobale = new TemperaturesVue(releveTemperature);
             pageGlobale.afficher();
         } else if (hash.match(/^#page-temperature-jour/)) {
             releveTemperature = temperatureDAO.recupereTemperatureAnneeMoisJour();
-            var pageJour = new TemperaturesJourVue(listeTemperatureHeure);
+            var pageJour = new TemperaturesJourVue(releveTemperature);
             pageJour.afficher();
         } else if (hash.match(/^#page-temperature-mois/)) {
             releveTemperature = temperatureDAO.recupereTemperatureAnneeMois();
-            var pageMois = new TemperaturesMoisVue(listeTemperatureMois);
+            var pageMois = new TemperaturesMoisVue(releveTemperature);
             pageMois.afficher();
         } else if (hash.match(/^#page-temperature-annee/)) {
             releveTemperature = temperatureDAO.recupereTemperatureAnnee();
-            var pageAnnee = new TemperaturesAnneeVue(listeTemperatureAnnee);
+            var pageAnnee = new TemperaturesAnneeVue(releveTemperature);
             pageAnnee.afficher();
         } else {
             console.log("rien");
