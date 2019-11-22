@@ -3,26 +3,28 @@ require "./connexion_bdd.php";
 
 function ListeTemperatureParAnneeMois($annee, $mois){
   $bdd = connexion_bdd();
-  $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
-                        MIN(temperature) AS temperatureMin,
-                        MAX(temperature) AS temperatureMax,
-                        day(date) AS jour,
-                        FROM ReleveEnvironnement
-                        WHERE year(date) = ?, month(date) = ?
-                        GROUP BY day(date)
-                        ORDER BY day(date);" );
+  $req = $bdd->prepare( 'SELECT AVG(temperature) AS "temperatureMoy",
+                        MIN(temperature) AS "temperatureMin",
+                        MAX(temperature) AS "temperatureMax",
+                        extract(day from "dateReleve") AS jour
+                        FROM "ReleveEnvironnement"
+                        WHERE extract(year from "dateReleve") = ?
+                        AND extract(month from "dateReleve") = ?
+                        GROUP BY extracT(day from "dateReleve")
+                        ORDER BY extract(day from "dateReleve");' );
 
   $req->execute(array($annee, $mois));
-  return $req->fetch(PDO::FETCH_BOTH);
+  return $req->fetchAll();
 }
 
 function MoyMinMaxParAnneeMois($annee, $mois){
   $bdd = connexion_bdd();
-  $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
-                        MIN(temperature) AS temperatureMin,
-                        MAX(temperature) AS temperatureMax,
-                        FROM ReleveEnvironnement
-                        WHERE year(date) = ?, month(date) = ?;");
+  $req = $bdd->prepare( 'SELECT AVG(temperature) AS "temperatureMoy",
+                        MIN(temperature) AS "temperatureMin",
+                        MAX(temperature) AS "temperatureMax"
+                        FROM "ReleveEnvironnement"
+                        WHERE extract(year from "dateReleve") = ?
+                        AND extract(month from "dateReleve") = ?;');
 
   $req->execute(array($annee, $mois));
   return $req->fetch(PDO::FETCH_BOTH);
@@ -30,36 +32,36 @@ function MoyMinMaxParAnneeMois($annee, $mois){
 
 
 
-$reponse = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+$reponse = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
 
-echo   $_GET['mois'] ."/". $_GET['annee'];
+
 
 if (isset($_GET['annee'],$_GET['mois']))
 {
 
 
-  $reponse .= "<ListeTemperature date= '". $_GET['mois'] ."/". $_GET['annee'] ."'>";
+  $reponse .= "<ListeTemperature date= '". $_GET['mois'] ."/". $_GET['annee'] ."'>\n";
 
   $listeTemperature = ListeTemperatureParAnneeMois($_GET['annee'],$_GET['mois']);
-  foreach ($listeTemperature as $key => $value) {
-    $reponse .= "<Temperature jour='".$jour."'>";
-      $reponse .= "<Min>".$temperatureMin."</Min>";
-      $reponse .= "<Max>".$temperatureMax."</Max>";
-      $reponse .= "<Moyenne>".$temperatureMoy."</Moyenne>";
-    $reponse .= "</Temperature>";
-  }
+  if (sizeof($listeTemperature) !=  0  ) {
+    foreach ($listeTemperature as $key ) {
+      $reponse .= "<Temperature jour='" . $key['jour'] . "'>\n";
+        $reponse .= "<Min>".$key['temperatureMin']."</Min>\n";
+        $reponse .= "<Max>".$key['temperatureMax']."</Max>\n";
+        $reponse .= "<Moyenne>".$key['temperatureMoy']."</Moyenne>\n";
+      $reponse .= "</Temperature>\n";
+    }
 
-  if ($listeTemperature != null) {
     $resultat = MoyMinMaxParAnneeMois($_GET['annee'],$_GET['mois']);
     if ($resultat != null) {
-      $reponse .= "<MinTotal>".$resultat->temperatureMin."</MinTotal>";
-      $reponse .= "<MaxTotal>".$resultat->temperatureMax."</MaxTotal>";
-      $reponse .= "<MoyenneTotal>".$resultat->temperatureMoy."</MoyenneTotal>";
+      $reponse .= "<MinTotal>".$resultat['temperatureMin']."</MinTotal>\n";
+      $reponse .= "<MaxTotal>".$resultat['temperatureMax']."</MaxTotal>\n";
+      $reponse .= "<MoyenneTotal>".$resultat['temperatureMoy']."</MoyenneTotal>\n";
     }
   }
 
 
-  $reponse .="</ListeTemperature>";
+  $reponse .="</ListeTemperature>\n";
 
 }
 echo $reponse;
