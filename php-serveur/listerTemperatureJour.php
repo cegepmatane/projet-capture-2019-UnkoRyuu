@@ -3,14 +3,16 @@ require "./connexion_bdd.php";
 
 function ListeTemperatureParAnneeMoisJour($annee, $mois, $jour){
   $bdd = connexion_bdd();
-  $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
-                        MIN(temperature) AS temperatureMin,
-                        MAX(temperature) AS temperatureMax,
-                        hour(date) AS heure,
-                        FROM ReleveEnvironnement
-                        WHERE year(date) = ?, month(date) = ?, day(date) = ?
-                        GROUP BY hour(date)
-                        ORDER BY hour(date);" );
+  $req = $bdd->prepare( 'SELECT AVG(temperature) AS "temperatureMoy",
+                        MIN(temperature) AS "temperatureMin",
+                        MAX(temperature) AS "temperatureMax",
+                        extract(hour from "dateReleve") AS heure,
+                        FROM "ReleveEnvironnement"
+                        WHERE extract(year from "dateReleve") = ?,
+                        extract(month from "dateReleve") = ?,
+                        extract(day from "dateReleve") = ?
+                        GROUP BY (hour from "dateReleve")
+                        ORDER BY (hour from "dateReleve"); ');
 
   $req->execute(array($annee, $mois, $jour));
   return $req->fetch(PDO::FETCH_BOTH);
@@ -18,11 +20,13 @@ function ListeTemperatureParAnneeMoisJour($annee, $mois, $jour){
 
 function MoyMinMaxParAnneeMoisJour($annee, $mois, $jour){
   $bdd = connexion_bdd();
-  $req = $bdd->prepare( "SELECT AVG(temperature) AS temperatureMoy,
-                        MIN(temperature) AS temperatureMin,
-                        MAX(temperature) AS temperatureMax,
-                        FROM ReleveEnvironnement
-                        WHERE year(date) = ?, month(date) = ?, day(date) = ?;");
+  $req = $bdd->prepare( 'SELECT AVG(temperature) AS "temperatureMoy",
+                        MIN(temperature) AS "temperatureMin",
+                        MAX(temperature) AS "temperatureMax"
+                        FROM "ReleveEnvironnement"
+                        WHERE extract(year from "dateReleve") = ?,
+                        extract(month from "dateReleve") = ?,
+                        extract(day from "dateReleve") = ?;');
 
   $req->execute(array($annee, $mois, $jour));
   return $req->fetch(PDO::FETCH_BOTH);
