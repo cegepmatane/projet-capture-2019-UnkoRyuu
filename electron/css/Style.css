@@ -67,9 +67,9 @@ label{
   padding: 2px;
 }
 
-body {
-  background-image: url("meteo.jpg");
-}
+/*body {*/
+/*  background-image: url("meteo.jpg");*/
+/*}*/
 
 table {
   font-family: arial, sans-serif;
