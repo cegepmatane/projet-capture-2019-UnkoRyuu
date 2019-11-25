@@ -67,9 +67,9 @@
         <thead>
         <tr>
           <th>Heure</th>
-          <th>Mininmum du jour</th>
-          <th>Maximum du jour</th>
-          <th>Moyenne du jour</th>
+          <th>Mininmum de l'heure</th>
+          <th>Maximum de l'heure</th>
+          <th>Moyenne de l'heure</th>
         </tr>
         </thead>
         <tbody id="table-heure">
@@ -87,43 +87,39 @@
 </script>
 
 <script type="plain/text" id="page-temperature-mois">
-    <title>Donnees du mois</title>
-    </head>
-
     <header>
         <h2>Donnees du mois</h2>
     </header>
 
-    <p>Voici les donnees du mois : </p>
-
-    <br></br>
-
-    <nav>
-  <table id="liste-temperature-mois"></table>
-
-    </nav>
-
     <section>
+      <h1>Temperature en Celsius : </h1>
+      <table>
+        <thead>
+        <tr>
+          <th>mois</th>
+          <th>Mininmum du mois</th>
+          <th>Maximum du mois</th>
+          <th>Moyenne du mois</th>
+        </tr>
+        </thead>
+        <tbody id="table-mois">
+        </tbody>
+      </table>
+      <h1>Temperature par jour: </h1>
+       <table>
+        <thead>
+        <tr>
+          <th>jour</th>
+          <th>Mininmum du jour</th>
+          <th>Maximum du jour</th>
+          <th>Moyenne du jour</th>
+        </tr>
+        </thead>
+        <tbody id="table-jour">
+        </tbody>
+      </table>
 
-    <label for="temperature">Temperature relevee:</label>
-
-    <input type="text" id="temperature" temperature="temperature" required
-    minlength="4" maxlength="8" size="10">
-    <br></br>
-
-    <label for="temperaturemax">Temperature maximum:</label>
-
-    <input type="text" id="temperaturemax" temperaturemax="temperaturemax" required
-    minlength="4" maxlength="8" size="10">
-    <br></br>
-
-    <label for="temperaturemin">Temperature minimum:</label>
-
-    <input type="text" id="temperaturemin" temperaturemin="temperaturemin" required
-    minlength="4" maxlength="8" size="10">
-    <br></br>
-
-    </section>
+  </section>
 
     <footer>
       <a href="#page-temperature-jour">Donnees du jour</a></br>
@@ -134,41 +130,37 @@
 </script>
 
 <script type="plain/text" id="page-temperature-annee">
-  <title>Donnees annee</title>
-  </head>
-
   <header>
       <h2>Donnees annee</h2>
   </header>
 
-  <p>Voici les donnees de cette annee : </p>
-
-  <br></br>
-
-  <nav>
-<table id="liste-temperature-annee"></table>
-
-  </nav>
-
   <section>
-
-  <label for="temperature">Temperature relevee:</label>
-
-  <input type="text" id="temperature" temperature="temperature" required
-  minlength="4" maxlength="8" size="10">
-  <br></br>
-
-  <label for="temperaturemax">Temperature maximum:</label>
-
-  <input type="text" id="temperaturemax" temperaturemax="temperaturemax" required
-  minlength="4" maxlength="8" size="10">
-  <br></br>
-
-  <label for="temperaturemin">Temperature minimum:</label>
-
-  <input type="text" id="temperaturemin" temperaturemin="temperaturemin" required
-  minlength="4" maxlength="8" size="10">
-  <br></br>
+      <h1>Temperature en Celsius : </h1>
+      <table>
+        <thead>
+        <tr>
+          <th>annee</th>
+          <th>Mininmum du annee</th>
+          <th>Maximum du annee</th>
+          <th>Moyenne du annee</th>
+        </tr>
+        </thead>
+        <tbody id="table-annee">
+        </tbody>
+      </table>
+      <h1>Temperature par mois: </h1>
+       <table>
+        <thead>
+        <tr>
+          <th>mois</th>
+          <th>Mininmum du mois</th>
+          <th>Maximum du mois</th>
+          <th>Moyenne du mois</th>
+        </tr>
+        </thead>
+        <tbody id="table-mois">
+        </tbody>
+      </table>
 
   </section>
 

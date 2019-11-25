@@ -17,6 +17,7 @@ var TemperartureDAO = function () {
 
                 parser = new DOMParser();
                 var reponse = parser.parseFromString(xml, "text/xml");
+                console.log(reponse);
 
 
                 var listeTemperature = reponse.getElementsByTagName("ListeTemperature")[0];
@@ -59,6 +60,7 @@ var TemperartureDAO = function () {
 
                 parser = new DOMParser();
                 var reponse = parser.parseFromString(xml, "text/xml");
+                console.log(reponse);
 
 
                 var listeTemperature = reponse.getElementsByTagName("ListeTemperature")[0];
@@ -102,7 +104,7 @@ var TemperartureDAO = function () {
 
                 parser = new DOMParser();
                 var reponse = parser.parseFromString(xml, "text/xml");
-
+                console.log(reponse);
 
                 var listeTemperature = reponse.getElementsByTagName("ListeTemperature")[0];
 
@@ -143,7 +145,7 @@ var TemperartureDAO = function () {
 
                 parser = new DOMParser();
                 var reponse = parser.parseFromString(xml, "text/xml");
-
+                console.log(reponse);
                 var temperature = reponse.getElementsByTagName("Temperature")[0];
                 var moyenne = temperature.getElementsByTagName("Moyenne")[0];
 

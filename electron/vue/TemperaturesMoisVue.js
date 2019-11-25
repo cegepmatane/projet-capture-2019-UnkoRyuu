@@ -7,15 +7,33 @@ var TemperaturesMoisVue = (function(){
     this.afficher = function(){
       elementBody = document.getElementsByTagName("body")[0];
       elementBody.innerHTML = pageTemperatureMoisVue;
+      var tableMois = document.getElementById("table-mois");
 
-      var listeTemperatureMoisPage = document.getElementById("liste-temperature-mois");
+      console.log(releveTemperature);
 
-      var textLi= "";
-      for(var temperatureMois in listeTemperatureMois){
-        textLi +="<tr><td> Temperature : "+ listeTemperatureMois[temperatureMois]+"</td></tr>";
-      }
-      listeTemperatureMoisPage.innerHTML = textLi;
+      var table = "<tr>";
+
+      table += "<td>"+releveTemperature.momentTemps+"</td>";
+      table += "<td>"+releveTemperature.temperatureMin+"</td>";
+      table += "<td>"+releveTemperature.temperatureMax+"</td>";
+      table += "<td>"+releveTemperature.temperatureMoy+"</td>";
+      table += "</tr>";
+      tableMois.innerHTML = table;
+
+      var tableJour= document.getElementById("table-jour");
+      var table = "";
+      console.log(releveTemperature.sousMoments);
+
+      releveTemperature.sousMoments.forEach(function(jour){
+        console.log(jour);
+        table += "<tr>";
+        table += "<td>"+jour.momentTemps+"</td>";
+        table += "<td>"+jour.temperatureMin+"</td>";
+        table += "<td>"+jour.temperatureMax+"</td>";
+        table += "<td>"+jour.temperatureMoy+"</td>";
+        table += "</tr>";
+      });
+      tableJour.innerHTML = table;
     }
   }
-
 })();

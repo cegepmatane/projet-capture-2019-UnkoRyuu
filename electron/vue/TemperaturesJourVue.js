@@ -9,6 +9,8 @@ var TemperaturesJourVue = (function(){
       elementBody.innerHTML = pageTemperatureJourVue;
       var tableJour = document.getElementById("table-jour");
 
+      console.log(releveTemperature);
+
       var table = "<tr>";
 
       table += "<td>"+releveTemperature.momentTemps+"</td>";
@@ -20,7 +22,9 @@ var TemperaturesJourVue = (function(){
 
       var tableHeure = document.getElementById("table-heure");
       var table = "";
-      for (var heure in releveTemperature.sousMoments){
+      console.log(releveTemperature.sousMoments);
+
+      releveTemperature.sousMoments.forEach(function(heure){
         console.log(heure);
         table += "<tr>";
         table += "<td>"+heure.momentTemps+"</td>";
@@ -28,7 +32,7 @@ var TemperaturesJourVue = (function(){
         table += "<td>"+heure.temperatureMax+"</td>";
         table += "<td>"+heure.temperatureMoy+"</td>";
         table += "</tr>";
-      }
+      });
       tableHeure.innerHTML = table;
     }
   }
