@@ -10,9 +10,11 @@ Membres du projet :
   Guillaume MOTAIS DE NARBONNE
   
   
-http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)/(mois)/(jour)
+
 
 exemple xml pour le jour: 
+http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)/(mois)/(jour)
+
 ```xml
 <ListeTemperature date= '29/11/2019'>
   <Temperature heure='8'>
@@ -35,7 +37,7 @@ exemple xml pour le jour:
   <MoyenneTotal>25.3572779700111</MoyenneTotal>
 </ListeTemperature>
 ```
-http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee+)/(mois)
+http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)/(mois)
 
 exemple xml pour le mois: 
 ```xml
@@ -75,9 +77,11 @@ exemple xml pour le mois:
   <MoyenneTotal>24.0974232175505</MoyenneTotal>
 </ListeTemperature>
 ```
-http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)
+
 
 exemple xml pour l'année: 
+http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)
+
 ```xml
 <ListeTemperature date= '2019'>
   <Temperature mois='10'>
@@ -95,9 +99,11 @@ exemple xml pour l'année:
   <MoyenneTotal>24.0977799104289</MoyenneTotal>
 </ListeTemperature>
 ```
-http://51.91.96.142/AnalyseEnvironnement/listerTemperature/global
+
 
 exemple xml pour le global: 
+
+http://51.91.96.142/AnalyseEnvironnement/listerTemperature/global
 ```xml
 <Temperature>
   <Moyenne>
