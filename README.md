@@ -12,8 +12,8 @@ Membres du projet :
   
 
 
-exemple xml pour le jour: 
-http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)/(mois)/(jour)
+#exemple xml pour le jour: 
+#http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)/(mois)/(jour)
 
 ```xml
 <ListeTemperature date= '29/11/2019'>
@@ -37,9 +37,10 @@ http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)/(mois)/(jour)
   <MoyenneTotal>25.3572779700111</MoyenneTotal>
 </ListeTemperature>
 ```
-http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)/(mois)
 
-exemple xml pour le mois: 
+#exemple xml pour le mois: 
+
+#http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)/(mois)
 ```xml
 <ListeTemperature date= '11/2019'>
   <Temperature jour='21'>
@@ -79,8 +80,8 @@ exemple xml pour le mois:
 ```
 
 
-exemple xml pour l'année: 
-http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)
+#exemple xml pour l'année: 
+#http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)
 
 ```xml
 <ListeTemperature date= '2019'>
@@ -101,9 +102,9 @@ http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)
 ```
 
 
-exemple xml pour le global: 
+#exemple xml pour le global: 
 
-http://51.91.96.142/AnalyseEnvironnement/listerTemperature/global
+#http://51.91.96.142/AnalyseEnvironnement/listerTemperature/global
 ```xml
 <Temperature>
   <Moyenne>
