@@ -13,7 +13,7 @@ Membres du projet :
 http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)/(mois)/(jour)
 
 exemple xml pour le jour: 
-
+```xml
 <ListeTemperature date= '29/11/2019'>
   <Temperature heure='8'>
     <Min>23.97</Min>
@@ -34,11 +34,11 @@ exemple xml pour le jour:
   <MaxTotal>31.35</MaxTotal>
   <MoyenneTotal>25.3572779700111</MoyenneTotal>
 </ListeTemperature>
-
+```
 http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee+)/(mois)
 
 exemple xml pour le mois: 
-
+```xml
 <ListeTemperature date= '11/2019'>
   <Temperature jour='21'>
     <Min>25.75</Min>
@@ -74,11 +74,11 @@ exemple xml pour le mois:
   <MaxTotal>33.33</MaxTotal>
   <MoyenneTotal>24.0974232175505</MoyenneTotal>
 </ListeTemperature>
-
+```
 http://51.91.96.142/AnalyseEnvironnement/listerTemperature/(annee)
 
 exemple xml pour l'année: 
-
+```xml
 <ListeTemperature date= '2019'>
   <Temperature mois='10'>
     <Min>28</Min>
@@ -94,11 +94,11 @@ exemple xml pour l'année:
   <MaxTotal>33.33</MaxTotal>
   <MoyenneTotal>24.0977799104289</MoyenneTotal>
 </ListeTemperature>
-
+```
 http://51.91.96.142/AnalyseEnvironnement/listerTemperature/global
 
 exemple xml pour le global: 
-
+```xml
 <Temperature>
   <Moyenne>
     <Annee>24.0977799104289</Annee>
@@ -109,3 +109,4 @@ exemple xml pour le global:
   <MaxAnnee>33.33</MaxAnnee>
   <TemperatureActuel>26.65</TemperatureActuel>
 </Temperature>
+```
